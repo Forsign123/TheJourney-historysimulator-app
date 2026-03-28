@@ -10,27 +10,42 @@
     
     <style>
         :root { --parchment: #d2b48c; --ocean-dark: #1a1a1a; --gold: #c5a059; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; color: #333; background-color: #f9f9f9; }
         
         /* Semantic Layout */
-        header { background: #000 url('gumroad3.jpg') no-repeat center/cover; height: 60vh; display: flex; align-items: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        header { 
+            background: #000 url('OnTheSevenSeas.png') no-repeat center/cover; 
+            height: 65vh; 
+            display: flex; 
+            align-items: center; 
+            color: white; 
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9); 
+        }
         .container { max-width: 1000px; margin: auto; padding: 20px; }
         
-        section { padding: 40px 0; border-bottom: 1px solid #eee; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        section { padding: 50px 0; border-bottom: 1px solid #ddd; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 20px; }
         
-        .app-screenshot { width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        .app-screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 15px; transition: transform 0.3s ease; }
+        .app-screenshot:hover { transform: scale(1.02); }
         
-        h1, h2 { color: var(--ocean-dark); }
-        .badge { background: var(--gold); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8em; vertical-align: middle; }
+        h1 { font-size: 3.5rem; margin: 0; }
+        h2 { color: var(--ocean-dark); border-left: 5px solid var(--gold); padding-left: 15px; }
+        h3 { color: var(--gold); margin-top: 0; }
+        
+        .specs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .specs-table td { padding: 12px; border-bottom: 1px solid #eee; }
+        .specs-table td:first-child { font-weight: bold; color: var(--ocean-dark); width: 30%; }
+
+        footer { background: #222; color: #bbb; padding: 40px 0; text-align: center; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="container">
-        <h1>"The Journey" <br><small>The Real-Time Historical Adventure</small></h1>
-        <p>Follow the wake of the HMS Endeavour as it happened, 250+ years later.</p>
+        <h1>"The Journey"</h1>
+        <p style="font-size: 1.5rem;">The Real-Time Historical Adventure on the Seven Seas.</p>
     </div>
 </header>
 
@@ -38,59 +53,58 @@
 
     <section id="about">
         <h2>Experience History in Real-Time</h2>
-        <p><strong>The Journey</strong> is a high-fidelity simulator that tracks Captain James Cook’s epic voyage of discovery. Unlike a static history book, this app syncs with the historical calendar, delivering verbatim log entries exactly when they were written.</p>
+        <p><strong>The Journey</strong> is a high-fidelity simulator that tracks Captain James Cook’s epic 1768 voyage. Our app syncs with the historical calendar, delivering verbatim log entries exactly when they were written, 250+ years later.</p>
         
         <div class="feature-grid">
             <div>
                 <h3>Verbatim Log Entries</h3>
-                <p>Read the actual remarks and observations from the logs of 1768. From the fitting of the ship at <strong>Deptford Yard</strong> to the crossing of the Equator.</p>
+                <p>Access the actual remarks and observations from the logs of 1768. From the fitting of the ship at <strong>Deptford Yard</strong> to the crossing of the Equator, every word is historically sourced.</p>
             </div>
             <div>
                 <h3>Interpolated Navigation</h3>
-                <p>Our algorithm uses historical wind, speed, and context to provide a continuous GPS track of the ship's location, even where coordinates weren't recorded.</p>
+                <p>Using historical wind data and recorded speeds, our engine provides a continuous GPS track of the HMS Endeavour's location, even through the vast, unmapped stretches of the ocean.</p>
             </div>
         </div>
     </section>
 
     <section id="interface">
-        <h2>Immersive Nautical Interface</h2>
+        <h2>Immersive Exploration Themes</h2>
         <div class="feature-grid">
             <div>
-                <img src="Main1.jpg" alt="Nautical Theme Interface showing 1768 log entry on parchment" class="app-screenshot">
-                <h3>The Nautical Theme</h3>
-                <p>Switch to <strong>Parchment Mode</strong> for an authentic 18th-century feel. Features include:</p>
-                <ul>
-                    <li>Ambient Ship Sounds (Creaking wood, wind, and waves)</li>
-                    <li>Nautical Typography</li>
-                    <li>Interactive 18th-century Style Maps</li>
-                </ul>
+                <img src="NauticalTheme.png" alt="Nautical Theme Interface - Authentic 18th-century parchment style" class="app-screenshot">
+                <h3>The Nautical Aesthetic</h3>
+                <p>Switch to the <strong>Nautical Theme</strong> for a period-accurate experience. It features high-resolution parchment textures and ambient ship sounds like creaking wood and ocean swells.</p>
             </div>
             <div>
-                <img src="Man.jpg" alt="Dark Mode Interface showing voyage tracking and expedition notes" class="app-screenshot">
+                <img src="ModernTheme.png" alt="Modern Theme Interface - High-contrast dark mode for night reading" class="app-screenshot">
                 <h3>The Modern Explorer</h3>
-                <p>Toggle to <strong>Modern Dark Mode</strong> for high-contrast reading during night-time exploration. Includes global offline map support for tracking anywhere.</p>
+                <p>The <strong>Modern Theme</strong> offers a sleek, high-contrast dark mode. Perfect for late-night reading, it includes global offline map support for tracking the voyage anywhere on Earth.</p>
             </div>
         </div>
     </section>
 
     <section id="features">
-        <h2>App Features & Expedition Notes</h2>
-        <table>
+        <h2>App Features & Specifications</h2>
+        <table class="specs-table">
             <tr>
-                <td><strong>Voyage Date:</strong></td>
-                <td>Starts July 27, 1768 (Real-time Sync)</td>
+                <td>Start Date</td>
+                <td>July 27, 1768 (Historical Real-time Sync)</td>
             </tr>
             <tr>
-                <td><strong>Offline Maps:</strong></td>
-                <td>Global zoom levels 0-5 available offline.</td>
+                <td>Mapping</td>
+                <td>Global Offline Maps (Zoom levels 0-5 included)</td>
             </tr>
             <tr>
-                <td><strong>Expedition Notes:</strong></td>
-                <td>Glossary, Crew Manifest, Image Gallery, and Navigation Methods.</td>
+                <td>Content</td>
+                <td>Crew Manifest, Nautical Glossary, and Image Gallery</td>
             </tr>
             <tr>
-                <td><strong>Accessibility:</strong></td>
-                <td>Adjustable text sizes (Small, Medium, Large).</td>
+                <td>Accessibility</td>
+                <td>Dynamic Typography (Small, Medium, Large)</td>
+            </tr>
+            <tr>
+                <td>Audio</td>
+                <td>Spatial Ambient Ship Sounds toggle</td>
             </tr>
         </table>
     </section>
@@ -98,9 +112,9 @@
 </main>
 
 <footer>
-    <div class="container" style="text-align: center; color: #666;">
-        <p>Explore the most epic journey of discovery ever recorded. <br> 
-        <em>"Modern determination: 32 degrees 38 minutes North."</em></p>
+    <div class="container">
+        <p>Explore the most epic journey of discovery ever recorded.</p>
+        <p><small><em>Current Coordinates: 32° 38' N, 16° 54' W</em></small></p>
     </div>
 </footer>
 
