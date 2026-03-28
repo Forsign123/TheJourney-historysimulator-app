@@ -85,4 +85,122 @@
         .app-screenshot { 
             width: 100%; 
             border-radius: 18px; 
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); 
+            margin-bottom: 25px; 
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        h2 { 
+            font-family: 'Cinzel', serif; 
+            color: var(--gold); 
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h3 { font-family: 'Cinzel', serif; color: #fff; font-size: 1.3rem; margin-top: 0; }
+
+        /* Specs Table Style */
+        .specs-table { 
+            width: 100%; 
+            background: var(--glass);
+            border-radius: 20px;
+            overflow: hidden;
+            border-collapse: collapse;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .specs-table td { padding: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .specs-table td:first-child { color: var(--gold); font-weight: bold; font-family: 'Cinzel', serif; width: 45%; }
+
+        /* CTA Buttons */
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: #000;
+            padding: 18px 45px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 800;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .cta-button:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.4); 
+            background: #d4b476;
+        }
+
+        footer { text-align: center; padding: 80px 0; color: #555; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.05); }
+        
+        @media (max-width: 600px) {
+            .cta-button { width: 80%; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="hero-content">
+        <h1>THE JOURNEY</h1>
+        <p class="hero-sub">The Real-Time Historical Adventure Simulator</p>
+        <a href="https://codesignprojects.gumroad.com/l/thejourney" class="cta-button">DOWNLOAD ON GUMROAD</a>
+    </div>
+</header>
+
+<main class="container">
+
+    <section id="about">
+        <h2>A Voyage Through Time</h2>
+        <div class="feature-grid">
+            <div class="card">
+                <h3>Verbatim Journals</h3>
+                <p>Experience the 1768 expedition exactly as Captain Cook wrote it. Verbatim logs synced to your modern calendar, bringing history to your pocket.</p>
+            </div>
+            <div class="card">
+                <h3>Live Tracking</h3>
+                <p>Precision-interpolated GPS pathing follows the HMS Endeavour's wake across the global maritime charts in true real-time.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="interface">
+        <h2>Visual Exploration</h2>
+        <div class="feature-grid">
+            <div class="card">
+                <img src="NauticalTheme.png" alt="Nautical Theme Screenshot" class="app-screenshot">
+                <h3>Nautical Authenticity</h3>
+                <p>Authentic parchment textures and 18th-century cartography combined with high-fidelity ambient ship sounds for total immersion.</p>
+            </div>
+            <div class="card">
+                <img src="ModernTheme.png" alt="Modern Theme Screenshot" class="app-screenshot">
+                <h3>Modern Precision</h3>
+                <p>High-contrast dark mode designed for the modern navigator. Featuring deep-dive expedition notes and offline mapping support.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="specs">
+        <h2>Technical Summary</h2>
+        <table class="specs-table">
+            <tr><td>Sync Logic</td><td>Day-for-day Historical Alignment</td></tr>
+            <tr><td>Audio Engine</td><td>Ambient Spatial Maritime Soundscapes</td></tr>
+            <tr><td>Data Source</td><td>Original Admiralty Logs (1768-1771)</td></tr>
+            <tr><td>Navigation</td><td>Interpolated Dead Reckoning Charts</td></tr>
+        </table>
+        <div style="text-align:center; margin-top: 60px;">
+            <a href="https://codesignprojects.gumroad.com/l/thejourney" class="cta-button">START YOUR VOYAGE NOW</a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; Forsign123 | The Journey History Simulator App</p>
+    <p><small>Historical Determination: 32° 38' N, 16° 54' W</small></p>
+    <p><a href="https://github.com/Forsign123/TheJourney-historysimulator-app" style="color:#444; text-decoration:none;">View Source Repository</a></p>
+</footer>
+
+</body>
+</html>
