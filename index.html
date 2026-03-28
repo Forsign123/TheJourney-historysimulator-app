@@ -5,118 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>The Journey: Captain Cook’s Journal - Real-Time Historical Voyage App</title>
-    <meta name="description" content="Experience Captain Cook's 1768 voyage in real-time. A historical simulator featuring verbatim journal entries, interpolated GPS tracking, and immersive nautical themes.">
-    <meta name="keywords" content="Captain Cook, Endeavour Voyage, Historical App, 1768 Journal, Naval History, Real-time Simulator">
+    <meta name="description" content="Experience Captain Cook's 1768 voyage in real-time. A historical simulator featuring verbatim journal entries and interpolated GPS tracking.">
     
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        :root { --parchment: #d2b48c; --ocean-dark: #1a1a1a; --gold: #c5a059; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; color: #333; background-color: #f9f9f9; }
+        :root { 
+            --gold: #c5a059; 
+            --dark-bg: #0f141a; 
+            --glass: rgba(255, 255, 255, 0.03);
+            --text-light: #e0e0e0;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            color: var(--text-light); 
+            background-color: var(--dark-bg);
+            overflow-x: hidden;
+        }
         
-        /* Semantic Layout */
+        /* Cinematic Hero Section */
         header { 
-            background: #000 url('OnTheSevenSeas.png') no-repeat center/cover; 
-            height: 65vh; 
+            background: linear-gradient(to bottom, rgba(15,20,26,0.2), rgba(15,20,26,1)), url('OnTheSevenSeas.png') no-repeat center/cover; 
+            height: 85vh; 
             display: flex; 
             align-items: center; 
-            color: white; 
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.9); 
+            justify-content: center;
+            text-align: center;
         }
-        .container { max-width: 1000px; margin: auto; padding: 20px; }
+
+        .hero-content {
+            padding: 20px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 { 
+            font-family: 'Cinzel', serif; 
+            font-size: clamp(2.5rem, 8vw, 5rem); 
+            margin: 0; 
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .hero-sub { 
+            font-family: 'EB Garamond', serif;
+            font-size: 1.6rem; 
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
         
-        section { padding: 50px 0; border-bottom: 1px solid #ddd; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 20px; }
+        section { padding: 80px 0; }
         
-        .app-screenshot { width: 100%; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 15px; transition: transform 0.3s ease; }
-        .app-screenshot:hover { transform: scale(1.02); }
-        
-        h1 { font-size: 3.5rem; margin: 0; }
-        h2 { color: var(--ocean-dark); border-left: 5px solid var(--gold); padding-left: 15px; }
-        h3 { color: var(--gold); margin-top: 0; }
-        
-        .specs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .specs-table td { padding: 12px; border-bottom: 1px solid #eee; }
-        .specs-table td:first-child { font-weight: bold; color: var(--ocean-dark); width: 30%; }
+        /* Modern UI Cards */
+        .feature-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 40px; 
+            margin-top: 30px; 
+        }
 
-        footer { background: #222; color: #bbb; padding: 40px 0; text-align: center; }
-    </style>
-</head>
-<body>
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 24px;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+        .card:hover { border-color: var(--gold); background: rgba(255,255,255,0.05); }
 
-<header>
-    <div class="container">
-        <h1>"The Journey"</h1>
-        <p style="font-size: 1.5rem;">The Real-Time Historical Adventure on the Seven Seas.</p>
-    </div>
-</header>
-
-<main class="container">
-
-    <section id="about">
-        <h2>Experience History in Real-Time</h2>
-        <p><strong>The Journey</strong> is a high-fidelity simulator that tracks Captain James Cook’s epic 1768 voyage. Our app syncs with the historical calendar, delivering verbatim log entries exactly when they were written, 250+ years later.</p>
-        
-        <div class="feature-grid">
-            <div>
-                <h3>Verbatim Log Entries</h3>
-                <p>Access the actual remarks and observations from the logs of 1768. From the fitting of the ship at <strong>Deptford Yard</strong> to the crossing of the Equator, every word is historically sourced.</p>
-            </div>
-            <div>
-                <h3>Interpolated Navigation</h3>
-                <p>Using historical wind data and recorded speeds, our engine provides a continuous GPS track of the HMS Endeavour's location, even through the vast, unmapped stretches of the ocean.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="interface">
-        <h2>Immersive Exploration Themes</h2>
-        <div class="feature-grid">
-            <div>
-                <img src="NauticalTheme.png" alt="Nautical Theme Interface - Authentic 18th-century parchment style" class="app-screenshot">
-                <h3>The Nautical Aesthetic</h3>
-                <p>Switch to the <strong>Nautical Theme</strong> for a period-accurate experience. It features high-resolution parchment textures and ambient ship sounds like creaking wood and ocean swells.</p>
-            </div>
-            <div>
-                <img src="ModernTheme.png" alt="Modern Theme Interface - High-contrast dark mode for night reading" class="app-screenshot">
-                <h3>The Modern Explorer</h3>
-                <p>The <strong>Modern Theme</strong> offers a sleek, high-contrast dark mode. Perfect for late-night reading, it includes global offline map support for tracking the voyage anywhere on Earth.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="features">
-        <h2>App Features & Specifications</h2>
-        <table class="specs-table">
-            <tr>
-                <td>Start Date</td>
-                <td>July 27, 1768 (Historical Real-time Sync)</td>
-            </tr>
-            <tr>
-                <td>Mapping</td>
-                <td>Global Offline Maps (Zoom levels 0-5 included)</td>
-            </tr>
-            <tr>
-                <td>Content</td>
-                <td>Crew Manifest, Nautical Glossary, and Image Gallery</td>
-            </tr>
-            <tr>
-                <td>Accessibility</td>
-                <td>Dynamic Typography (Small, Medium, Large)</td>
-            </tr>
-            <tr>
-                <td>Audio</td>
-                <td>Spatial Ambient Ship Sounds toggle</td>
-            </tr>
-        </table>
-    </section>
-
-</main>
-
-<footer>
-    <div class="container">
-        <p>Explore the most epic journey of discovery ever recorded.</p>
-        <p><small><em>Current Coordinates: 32° 38' N, 16° 54' W</em></small></p>
-    </div>
-</footer>
-
-</body>
-</html>
+        .app-screenshot { 
+            width: 100%; 
+            border-radius: 18px; 
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0
