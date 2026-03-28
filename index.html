@@ -86,8 +86,13 @@
         /* CTA Buttons */
         .cta-button { display: inline-block; background: var(--gold); color: #000; padding: 18px 45px; border-radius: 60px; text-decoration: none; font-weight: 800; font-family: 'Cinzel', serif; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
         .cta-button:hover { transform: scale(1.05); background: #d4b476; }
+        
+        .secondary-cta { background: transparent; border: 2px solid var(--gold); color: var(--gold); box-shadow: none; }
+        .secondary-cta:hover { background: var(--gold); color: #000; box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3); }
 
         footer { text-align: center; padding: 60px 0; color: #666; font-size: 0.95rem; }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -135,6 +140,15 @@
         </div>
     </section>
 
+    <section id="devlog">
+        <h2>Behind the Voyage</h2>
+        <div class="card" style="text-align: center; max-width: 800px; margin: auto; padding: 50px 30px;">
+            <h3 style="color: var(--gold); font-size: 1.6rem; margin-bottom: 15px;">How We Interpolated Captain Cook's Coordinates</h3>
+            <p style="margin-bottom: 30px;">Discover the technical magic behind our real-time 18th-century mapping engine. Dive into the historical dead reckoning and wind data used to bring the HMS Endeavour to life.</p>
+            <a href="article.html" class="cta-button secondary-cta">READ THE DEVLOG</a>
+        </div>
+    </section>
+
     <section id="faq">
         <h2>Frequently Asked Questions</h2>
         
@@ -153,7 +167,7 @@
             <p>Yes. Every log entry, coordinate, and remark is transcribed verbatim from the original Admiralty logs and Captain James Cook's personal journals kept during the first voyage of discovery.</p>
         </details>
 
-        <div style="text-align:center; margin-top: 50px;">
+        <div style="text-align:center; margin-top: 60px;">
             <a href="https://codesignprojects.gumroad.com/l/thejourney" class="cta-button">START YOUR VOYAGE NOW</a>
         </div>
     </section>
@@ -163,6 +177,7 @@
 <footer>
     <p>&copy; Codesign Projects | The Journey Historical Simulator App</p>
     <p><small>Historical Determination: 32° 38' N, 16° 54' W</small></p>
+    <p><small><a href="article.html">Developer Blog</a> | <a href="https://github.com/Forsign123/TheJourney-historysimulator-app">View Source</a></small></p>
 </footer>
 
 </body>
