@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>The Journey: Captain Cook’s Journal - Real-Time Historical Voyage App</title>
-    <meta name="description" content="Experience Captain Cook's 1768 voyage in real-time. A historical simulator featuring verbatim journal entries and interpolated GPS tracking.">
+    <title>The Journey: Captain Cook’s Journal - Real-Time HMS Endeavour Simulator</title>
+    <meta name="description" content="Experience Captain James Cook's 1768 voyage aboard the HMS Endeavour in real-time. A historical maritime simulator featuring verbatim journal entries, offline maps, and GPS tracking.">
+    <meta name="keywords" content="Captain Cook, HMS Endeavour, Historical App, 1768 Journal, Naval History, Real-time Simulator, Maritime Navigation, Age of Discovery, Transit of Venus">
+    <meta name="author" content="Codesign Projects">
     
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "The Journey: Captain Cook’s Journal",
+      "operatingSystem": "Web, iOS, Android",
+      "applicationCategory": "EducationalApplication",
+      "url": "https://codesignprojects.gumroad.com/l/thejourney",
+      "description": "A real-time historical simulator tracking the 1768 voyage of Captain James Cook and the HMS Endeavour with verbatim journal entries and interpolated navigation.",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://codesignprojects.gumroad.com/l/thejourney"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Codesign Projects"
+      }
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -19,124 +41,53 @@
 
         body { 
             font-family: 'Inter', sans-serif; 
-            line-height: 1.6; 
+            line-height: 1.7; 
             margin: 0; 
             color: var(--text-light); 
             background-color: var(--dark-bg);
             overflow-x: hidden;
         }
         
-        /* Cinematic Hero Section */
+        /* Hero Section */
         header { 
-            background: linear-gradient(to bottom, rgba(15,20,26,0.2), rgba(15,20,26,1)), url('OnTheSevenSeas.png') no-repeat center/cover; 
-            height: 85vh; 
+            background: linear-gradient(to bottom, rgba(15,20,26,0.3), rgba(15,20,26,1)), url('OnTheSevenSeas.png') no-repeat center/cover; 
+            height: 90vh; 
             display: flex; 
             align-items: center; 
             justify-content: center;
             text-align: center;
         }
 
-        .hero-content {
-            padding: 20px;
-            animation: fadeIn 2s ease-in;
-        }
-
+        .hero-content { padding: 20px; animation: fadeIn 1.5s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        h1 { 
-            font-family: 'Cinzel', serif; 
-            font-size: clamp(2.5rem, 8vw, 5rem); 
-            margin: 0; 
-            letter-spacing: 4px;
-            color: #fff;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 5rem); margin: 0; letter-spacing: 4px; color: #fff; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .hero-sub { font-family: 'EB Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--gold); margin-bottom: 30px; }
 
-        .hero-sub { 
-            font-family: 'EB Garamond', serif;
-            font-size: 1.6rem; 
-            font-style: italic;
-            color: var(--gold);
-            margin-bottom: 30px;
-        }
-
-        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+        .container { max-width: 1000px; margin: auto; padding: 40px 20px; }
+        section { padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         
-        section { padding: 80px 0; }
-        
-        /* Modern UI Cards */
-        .feature-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 40px; 
-            margin-top: 30px; 
-        }
+        h2 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
+        h3 { font-family: 'Cinzel', serif; color: #fff; font-size: 1.4rem; margin-top: 0; }
+        p { font-size: 1.05rem; color: #ccc; }
 
-        .card {
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 24px;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-        }
+        /* UI Cards */
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 40px; }
+        .card { background: var(--glass); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; transition: all 0.3s ease; }
         .card:hover { border-color: var(--gold); background: rgba(255,255,255,0.05); }
+        .app-screenshot { width: 100%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); }
 
-        .app-screenshot { 
-            width: 100%; 
-            border-radius: 18px; 
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); 
-            margin-bottom: 25px; 
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        h2 { 
-            font-family: 'Cinzel', serif; 
-            color: var(--gold); 
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        h3 { font-family: 'Cinzel', serif; color: #fff; font-size: 1.3rem; margin-top: 0; }
-
-        /* Specs Table Style */
-        .specs-table { 
-            width: 100%; 
-            background: var(--glass);
-            border-radius: 20px;
-            overflow: hidden;
-            border-collapse: collapse;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .specs-table td { padding: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .specs-table td:first-child { color: var(--gold); font-weight: bold; font-family: 'Cinzel', serif; width: 45%; }
+        /* SEO Native FAQ Styling */
+        details { background: var(--glass); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 15px; padding: 15px 25px; }
+        summary { font-family: 'Cinzel', serif; font-weight: bold; font-size: 1.2rem; color: var(--gold); cursor: pointer; list-style: none; outline: none; }
+        summary::-webkit-details-marker { display: none; }
+        details[open] summary { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 10px; }
 
         /* CTA Buttons */
-        .cta-button {
-            display: inline-block;
-            background: var(--gold);
-            color: #000;
-            padding: 18px 45px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 800;
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        .cta-button:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.4); 
-            background: #d4b476;
-        }
+        .cta-button { display: inline-block; background: var(--gold); color: #000; padding: 18px 45px; border-radius: 60px; text-decoration: none; font-weight: 800; font-family: 'Cinzel', serif; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .cta-button:hover { transform: scale(1.05); background: #d4b476; }
 
-        footer { text-align: center; padding: 80px 0; color: #555; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.05); }
-        
-        @media (max-width: 600px) {
-            .cta-button { width: 80%; }
-        }
+        footer { text-align: center; padding: 60px 0; color: #666; font-size: 0.95rem; }
     </style>
 </head>
 <body>
@@ -144,7 +95,7 @@
 <header>
     <div class="hero-content">
         <h1>THE JOURNEY</h1>
-        <p class="hero-sub">The Real-Time Historical Adventure Simulator</p>
+        <p class="hero-sub">The Real-Time HMS Endeavour Simulator</p>
         <a href="https://codesignprojects.gumroad.com/l/thejourney" class="cta-button">DOWNLOAD ON GUMROAD</a>
     </div>
 </header>
@@ -152,44 +103,57 @@
 <main class="container">
 
     <section id="about">
-        <h2>A Voyage Through Time</h2>
+        <h2>Relive The Age of Discovery</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">
+            Commissioned by the Royal Society in 1768, Captain James Cook set sail on the HMS Endeavour to observe the Transit of Venus and search for the elusive <em>Terra Australis Incognita</em>. <strong>The Journey</strong> is a first-of-its-kind historical simulator that allows you to experience this legendary maritime expedition in true real-time.
+        </p>
         <div class="feature-grid">
             <div class="card">
-                <h3>Verbatim Journals</h3>
-                <p>Experience the 1768 expedition exactly as Captain Cook wrote it. Verbatim logs synced to your modern calendar, bringing history to your pocket.</p>
+                <h3>Verbatim Historical Journals</h3>
+                <p>Read the exact 18th-century observations directly from Captain Cook’s personal logs. The app syncs with the modern calendar, delivering day-for-day entries from the fitting at Deptford Yard to navigating the treacherous Great Barrier Reef.</p>
             </div>
             <div class="card">
-                <h3>Live Tracking</h3>
-                <p>Precision-interpolated GPS pathing follows the HMS Endeavour's wake across the global maritime charts in true real-time.</p>
+                <h3>Interpolated GPS Tracking</h3>
+                <p>Using advanced interpolation of historical recorded speeds, wind direction, and dead reckoning, our mapping engine charts the exact wake of the ship across global waters, bridging the gap between history and modern telemetry.</p>
             </div>
         </div>
     </section>
 
     <section id="interface">
-        <h2>Visual Exploration</h2>
+        <h2>Immersive Maritime Interface</h2>
         <div class="feature-grid">
             <div class="card">
-                <img src="NauticalTheme.png" alt="Nautical Theme Screenshot" class="app-screenshot">
-                <h3>Nautical Authenticity</h3>
-                <p>Authentic parchment textures and 18th-century cartography combined with high-fidelity ambient ship sounds for total immersion.</p>
+                <img src="NauticalTheme.png" alt="Nautical Theme interface showing 18th-century parchment logs and cartography" class="app-screenshot">
+                <h3>The Nautical Aesthetic</h3>
+                <p>Engage with authentic parchment textures, period-accurate cartography, and ambient binaural ship sounds (creaking timber, ocean swells, and wind) for total historical immersion.</p>
             </div>
             <div class="card">
-                <img src="ModernTheme.png" alt="Modern Theme Screenshot" class="app-screenshot">
-                <h3>Modern Precision</h3>
-                <p>High-contrast dark mode designed for the modern navigator. Featuring deep-dive expedition notes and offline mapping support.</p>
+                <img src="ModernTheme.png" alt="Modern dark mode interface showing global offline mapping and expedition notes" class="app-screenshot">
+                <h3>The Modern Explorer</h3>
+                <p>A high-contrast dark mode interface offering deep-dive expedition notes, a full crew manifest, a nautical glossary, and robust offline mapping for tracking the voyage without an internet connection.</p>
             </div>
         </div>
     </section>
 
-    <section id="specs">
-        <h2>Technical Summary</h2>
-        <table class="specs-table">
-            <tr><td>Sync Logic</td><td>Day-for-day Historical Alignment</td></tr>
-            <tr><td>Audio Engine</td><td>Ambient Spatial Maritime Soundscapes</td></tr>
-            <tr><td>Data Source</td><td>Original Admiralty Logs (1768-1771)</td></tr>
-            <tr><td>Navigation</td><td>Interpolated Dead Reckoning Charts</td></tr>
-        </table>
-        <div style="text-align:center; margin-top: 60px;">
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        
+        <details>
+            <summary>How does the real-time simulator work?</summary>
+            <p>The app aligns the current calendar date with the 1768-1771 timeline. If Captain Cook recorded a storm off the coast of Brazil on today's date in 1768, you will unlock and read that exact journal entry today.</p>
+        </details>
+        
+        <details>
+            <summary>Do I need an internet connection to use the map?</summary>
+            <p>No. The app includes global offline maps (Zoom levels 0-5), allowing you to track the HMS Endeavour's coordinates and interpolated path anywhere in the world, completely offline.</p>
+        </details>
+
+        <details>
+            <summary>Are the journal entries historically accurate?</summary>
+            <p>Yes. Every log entry, coordinate, and remark is transcribed verbatim from the original Admiralty logs and Captain James Cook's personal journals kept during the first voyage of discovery.</p>
+        </details>
+
+        <div style="text-align:center; margin-top: 50px;">
             <a href="https://codesignprojects.gumroad.com/l/thejourney" class="cta-button">START YOUR VOYAGE NOW</a>
         </div>
     </section>
@@ -197,9 +161,8 @@
 </main>
 
 <footer>
-    <p>&copy; Forsign123 | The Journey History Simulator App</p>
+    <p>&copy; Codesign Projects | The Journey Historical Simulator App</p>
     <p><small>Historical Determination: 32° 38' N, 16° 54' W</small></p>
-    <p><a href="https://github.com/Forsign123/TheJourney-historysimulator-app" style="color:#444; text-decoration:none;">View Source Repository</a></p>
 </footer>
 
 </body>
