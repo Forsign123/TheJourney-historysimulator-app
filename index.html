@@ -3,55 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Journey | Real-Time HMS Endeavour Simulation</title>
-    <meta name="description" content="Experience James Cook's first voyage in real-time. A historical Android app featuring verbatim logs and live notifications.">
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "The Journey",
-      "operatingSystem": "Android",
-      "applicationCategory": "EducationApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0.00",
-        "priceCurrency": "USD"
-      },
-      "description": "A real-time historical simulation of the HMS Endeavour's 1768 voyage. Features daily log notifications from James Cook and Joseph Banks."
-    }
-    </script>
-</head>
-<body style="font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; color: #333;">
-
-    <header>
-        <h1>The Journey: The Endeavour Voyage in Real-Time</h1>
-        <p><strong>A unique historical project by Codesign Projects.</strong></p>
-    </header>
-
-    <section>
-        <h2>What is The Journey?</h2>
-        <p>The Journey is an Android application that allows you to experience Captain James Cook's first voyage (1768–1771) exactly as it happened, in <strong>true real-time</strong>. When you start the app, you begin a three-year journey where notifications and log entries arrive on your phone at the exact moment they were recorded over 250 years ago.</p>
-        <a href="https://codesignprojects.gumroad.com/l/thejourney" style="background: #e31b23; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Download on Gumroad</a>
-    </section>
-
-    <section>
-        <h2>Frequently Asked Questions (FAQ)</h2>
+    <title>The Journey: Captain Cook’s Journal - Real-Time Historical Voyage App</title>
+    <meta name="description" content="Experience Captain Cook's 1768 voyage in real-time. A historical simulator featuring verbatim journal entries, interpolated GPS tracking, and immersive nautical themes.">
+    <meta name="keywords" content="Captain Cook, Endeavour Voyage, Historical App, 1768 Journal, Naval History, Real-time Simulator">
+    
+    <style>
+        :root { --parchment: #d2b48c; --ocean-dark: #1a1a1a; --gold: #c5a059; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; color: #333; }
         
-        <h3>How does the real-time aspect work?</h3>
-        <p>The app synchronizes with the historical timeline. If the HMS Endeavour spent two weeks at sea without sight of land, the app will remain quiet, simulating the isolation of 18th-century sailing.</p>
+        /* Semantic Layout */
+        header { background: #000 url('gumroad3.jpg') no-repeat center/cover; height: 60vh; display: flex; align-items: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        
+        section { padding: 40px 0; border-bottom: 1px solid #eee; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        
+        .app-screenshot { width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        
+        h1, h2 { color: var(--ocean-dark); }
+        .badge { background: var(--gold); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8em; vertical-align: middle; }
+    </style>
+</head>
+<body>
 
-        <h3>What logs are included?</h3>
-        <p>The app features the verbatim journals of <strong>Captain James Cook</strong> and <strong>Joseph Banks</strong>, alongside modern nautical commentary to help explain 18th-century maritime terms.</p>
+<header>
+    <div class="container">
+        <h1>"The Journey" <br><small>The Real-Time Historical Adventure</small></h1>
+        <p>Follow the wake of the HMS Endeavour as it happened, 250+ years later.</p>
+    </div>
+</header>
 
-        <h3>Is there a map?</h3>
-        <p>Yes. The app includes a live map tracking the ship's coordinates, using historical data to interpolate the ship's position even on days when logs weren't recorded.</p>
+<main class="container">
+
+    <section id="about">
+        <h2>Experience History in Real-Time</h2>
+        <p><strong>The Journey</strong> is a high-fidelity simulator that tracks Captain James Cook’s epic voyage of discovery. Unlike a static history book, this app syncs with the historical calendar, delivering verbatim log entries exactly when they were written.</p>
+        
+        <div class="feature-grid">
+            <div>
+                <h3>Verbatim Log Entries</h3>
+                <p>Read the actual remarks and observations from the logs of 1768. From the fitting of the ship at <strong>Deptford Yard</strong> to the crossing of the Equator.</p>
+            </div>
+            <div>
+                <h3>Interpolated Navigation</h3>
+                <p>Our algorithm uses historical wind, speed, and context to provide a continuous GPS track of the ship's location, even where coordinates weren't recorded.</p>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <hr>
-        <p>Requires Android. Installation requires enabling "Unknown Sources" as the app is distributed via APK on Gumroad.</p>
-    </footer>
+    <section id="interface">
+        <h2>Immersive Nautical Interface</h2>
+        <div class="feature-grid">
+            <div>
+                <img src="Main1.jpg" alt="Nautical Theme Interface showing 1768 log entry on parchment" class="app-screenshot">
+                <h3>The Nautical Theme</h3>
+                <p>Switch to <strong>Parchment Mode</strong> for an authentic 18th-century feel. Features include:</p>
+                <ul>
+                    <li>Ambient Ship Sounds (Creaking wood, wind, and waves)</li>
+                    <li>Nautical Typography</li>
+                    <li>Interactive 18th-century Style Maps</li>
+                </ul>
+            </div>
+            <div>
+                <img src="Man.jpg" alt="Dark Mode Interface showing voyage tracking and expedition notes" class="app-screenshot">
+                <h3>The Modern Explorer</h3>
+                <p>Toggle to <strong>Modern Dark Mode</strong> for high-contrast reading during night-time exploration. Includes global offline map support for tracking anywhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2>App Features & Expedition Notes</h2>
+        <table>
+            <tr>
+                <td><strong>Voyage Date:</strong></td>
+                <td>Starts July 27, 1768 (Real-time Sync)</td>
+            </tr>
+            <tr>
+                <td><strong>Offline Maps:</strong></td>
+                <td>Global zoom levels 0-5 available offline.</td>
+            </tr>
+            <tr>
+                <td><strong>Expedition Notes:</strong></td>
+                <td>Glossary, Crew Manifest, Image Gallery, and Navigation Methods.</td>
+            </tr>
+            <tr>
+                <td><strong>Accessibility:</strong></td>
+                <td>Adjustable text sizes (Small, Medium, Large).</td>
+            </tr>
+        </table>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container" style="text-align: center; color: #666;">
+        <p>Explore the most epic journey of discovery ever recorded. <br> 
+        <em>"Modern determination: 32 degrees 38 minutes North."</em></p>
+    </div>
+</footer>
 
 </body>
 </html>
