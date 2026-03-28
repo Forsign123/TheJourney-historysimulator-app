@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>DevLog: Interpolating Captain Cook's Coordinates | The Journey App</title>
+    <meta name="description" content="Behind the scenes of The Journey App: How we used historical dead reckoning and 18th-century wind data to interpolate the exact GPS path of the HMS Endeavour.">
+    <meta name="author" content="Codesign Projects">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "How We Interpolated Captain Cook's GPS Coordinates",
+      "image": "https://forsign123.github.io/TheJourney-historysimulator-app/OnTheSevenSeas.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Codesign Projects"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Codesign Projects",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://forsign123.github.io/TheJourney-historysimulator-app/OnTheSevenSeas.png"
+        }
+      },
+      "datePublished": "2024-05-20",
+      "description": "A deep dive into the technical process of turning 18th-century nautical logs into a real-time digital tracking experience."
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root { 
+            --gold: #c5a059; 
+            --dark-bg: #0f141a; 
+            --glass: rgba(255, 255, 255, 0.03);
+            --text-light: #e0e0e0;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.8; 
+            margin: 0; 
+            color: var(--text-light); 
+            background-color: var(--dark-bg);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(15,20,26,0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #fff; }
+
+        /* Article Header */
+        .article-header {
+            padding: 80px 20px 40px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .article-tag {
+            color: var(--gold);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .article-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #fff;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        .article-meta {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        /* Article Content Setup */
+        .article-content {
+            max-width: 750px;
+            margin: 60px auto;
+            padding: 0 20px;
+            font-size: 1.15rem;
+            color: #ccc;
+        }
+
+        /* Reading Typography */
+        .article-content h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        .article-content h3 {
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            font-size: 1.4rem;
+            margin-top: 40px;
+        }
+        .article-content p {
+            margin-bottom: 25px;
+        }
+        
+        /* Beautiful Blockquotes for Historical Text */
+        blockquote {
+            background: var(--glass);
+            border-left: 4px solid var(--gold);
+            margin: 40px 0;
+            padding: 25px 30px;
+            border-radius: 0 12px 12px 0;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #fff;
+        }
+
+        .article-image {
+            width: 100%;
+            border-radius: 12px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: -25px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* Bottom CTA */
+        .article-cta {
+            background: var(--glass);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 16px;
+            padding: 50px 30px;
+            text-align: center;
+            margin: 80px 0;
+        }
+        .cta-button { display: inline-block; background: var(--gold); color: #000; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 800; font-family: 'Cinzel', serif; margin-top: 20px; transition: all 0.3s ease; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(197, 160, 89, 0.4); }
+
+        footer { text-align: center; padding: 40px 0; color: #555; border-top: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">← Back to Home</a>
+    <a href="https://codesignprojects.gumroad.com/l/thejourney">Get the App</a>
+</nav>
+
+<header class="article-header">
+    <span class="article-tag">Development Log</span>
+    <h1 class="article-title">How We Interpolated Captain Cook's GPS Coordinates</h1>
+    <p class="article-meta">Published by Codesign Projects • 5 min read</p>
+</header>
+
+<main class="article-content">
+    
+    <p>When we set out to build <strong>The Journey</strong>, the goal was simple: create a real-time simulator of the 1768 HMS Endeavour expedition. We had the verbatim journal entries, we had the historical dates, but we quickly ran into a massive technical wall regarding the map.</p>
+
+    <p>Captain James Cook was a master navigator, but in the 18th century, a ship's log didn't record minute-by-minute GPS coordinates. Sometimes, days would pass in the open ocean with only a single coordinate noted at noon.</p>
+
+    <h2>The Dead Reckoning Problem</h2>
+    
+    <p>If we just plotted the exact coordinates recorded in the Admiralty logs, our digital ship would "teleport" across the map once a day. That ruins the immersion of a real-time simulator. We needed the ship to move smoothly across the UI, 24 hours a day.</p>
+
+    <blockquote>
+        "Moderate and fair weather... hoisted the Pendant, and took charge of the Ship... From this day to the 21st of July we were constantly employed in fitting the Ship."
+        <br><br><span style="font-size: 1rem; color: #888;">— Excerpt from the July 1768 Log</span>
+    </blockquote>
+
+    <p>To solve this, we had to rely on the same technique the sailors used: <strong>Dead Reckoning</strong>.</p>
+
+    <h2>Building the Interpolation Engine</h2>
+
+    <p>We created an algorithm that reads the distance between Point A (Monday's noon coordinate) and Point B (Tuesday's noon coordinate). But a straight line isn't historically accurate—ships tack against the wind.</p>
+
+    <img src="Man.jpg" alt="Dark mode interface showing the interpolated map path of the HMS Endeavour" class="article-image">
+    <p class="image-caption">Notice the subtle curves in the tracking path—this represents our wind-adjusted interpolation.</p>
+
+    <p>By feeding our engine the historical wind direction and speed notes from Cook’s log margins, the app mathematically generates a curved, realistic sailing path. Now, when you open the app at 3:00 AM, the GPS tracker knows exactly where the ship is located in the middle of the Atlantic, down to the exact degree and minute.</p>
+
+    <h3>Bridging History and Tech</h3>
+    
+    <p>It was a painstaking process of cross-referencing modern mapping APIs with 250-year-old handwriting. But the result is a seamless, modern UI that honors the incredible navigational achievements of the original crew.</p>
+
+    <div class="article-cta">
+        <h2 style="margin-top: 0;">Experience the Simulation</h2>
+        <p>Want to see the interpolation engine in action and follow the voyage day-by-day?</p>
+        <a href="https://codesignprojects.gumroad.com/l/thejourney" class="cta-button">Download The Journey</a>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; Codesign Projects | The Journey Historical Simulator App</p>
+</footer>
+
+</body>
+</html>
